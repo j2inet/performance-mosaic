@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            .root { 
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                transform-origin: top left;
+                width: 1920px;
+                height: 1080px;
+                overflow: hidden;
+            }
+
+            .map-area { 
+                position: absolute;
+                transform-origin: top left;
+                top: 0px;
+                left: 0px;
+                transition: top  1.0s ease-in-out, 
+                            left 1.0s ease-in-out;
+            }
+
+            .position-01 {
+                left:-1000px;
+                top: 0px;
+            }
+
+            .position-02 {
+                left: -2000px;
+                top:-3000px;
+            }
+
+            .position-03 {
+                left: -17000px;
+                top:-3000px;
+            }
+
+            .position-04 {
+                left: -19000px;
+                top:-2000px;                
+            }
+
+
+            .navigation-panel {
+                position: absolute;
+                top: 1080px;
+                left: 0px;
+                width: 1920px;
+                height: 260px;
+                background-color: blanchedalmond;
+            }
+
+            .nav-button {
+                width: 128px;
+                height: 32px;
+            }
+
+            .planet-map {
+                position: absolute;
+            }
+
+            .moon { 
+                top: 0px;
+                left: 0px;                
+            }
+
+            .titan {
+                top: 0px;
+                left: 11520px;
+            }
+        </style>
+        <script>
+            var rootElement;
+            var mapElement;
+            function removePositionClasses() { 
+                for(var i=1;i<=6;++i) {
+                    mapElement.classList.remove(`position-0${i}`);
+                }
+            }
+            function goToPosition(position) {
+                removePositionClasses();
+                mapElement.classList.add(position);
+            }
+
+            function start() { 
+                console.log('started');
+                rootElement = document.getElementById('root');
+                mapElement = document.getElementById('map-area');
+                document.getElementById('position-01-button').addEventListener('click',()=>{goToPosition('position-01')})
+                document.getElementById('position-02-button').addEventListener('click',()=>{goToPosition('position-02')})
+                document.getElementById('position-03-button').addEventListener('click',()=>{goToPosition('position-03')})
+                document.getElementById('position-04-button').addEventListener('click',()=>{goToPosition('position-04')})
+                document.getElementById('position-05-button').addEventListener('click',()=>{goToPosition('position-05')})
+                document.getElementById('position-06-button').addEventListener('click',()=>{goToPosition('position-06')})
+            }
+            document.addEventListener('DOMContentLoaded', start);
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="root" id="root">
+            <div class="map-area" id="map-area">
+                <img class="planet-map moon" src="images/PIA11673~orig.jpg" alt="Earth's Moon Map" />
+                <img class="planet-map titan" src="images/PIA20713~orig.jpg" alt="Map of Titan" />
+            </div>    
+        </div>
+
+        <div class="navigation-panel">
+            <button id="position-01-button" class="nav-button">Position 1</button>
+            <button id="position-02-button" class="nav-button">Position 2</button>
+            <button id="position-03-button" class="nav-button">Position 3</button>
+            <button id="position-04-button" class="nav-button">Position 4</button>
+            <button id="position-05-button" class="nav-button">Position 5</button>
+            <button id="position-06-button" class="nav-button">Position 6</button>
+            
+        </div>
+
+    </body>
+</html>
